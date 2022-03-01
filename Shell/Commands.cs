@@ -17,10 +17,15 @@ namespace Slagathor
             Console.WriteLine("beep : Makes the console go beep");
             Console.WriteLine("shutdown : Turns off the computer");
             Console.WriteLine("restart : Turns off then on the computer");
+            Console.WriteLine("crash : Forcibly crashes Slagathor");
         }
         public void test(List<string> args)
         {
             Console.WriteLine("It works!");
+            if ( args.Count >= 1 )
+            { Console.WriteLine(args[0]); }
+            else
+            { Console.WriteLine("It works!"); }
         }
         public void cleanup(List<string> args)
         {

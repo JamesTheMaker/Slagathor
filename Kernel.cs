@@ -8,6 +8,7 @@ namespace Slagathor
     public class Kernel : Sys.Kernel
     {
         ShellPromt Prompt = new ShellPromt();
+        Utility Util = new Utility();
 
         protected override void BeforeRun()
         {
@@ -40,8 +41,7 @@ namespace Slagathor
             }
             catch(Exception Ex)
             {
-                Console.Write("Error: ");
-                Console.WriteLine(Ex);
+                Util.Crash(Ex.Message);
             }
         }
     }

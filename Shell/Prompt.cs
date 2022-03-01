@@ -8,10 +8,15 @@ namespace Slagathor
     public class ShellPromt
     {
         ShellCmd CMD = new ShellCmd();
+        Utility Util = new Utility();
 
         public void Forward( string Input )
         {
-            List<string> args = ParseArgs(Input);
+            List<string> args = Utility.ParseArgs(Input);
+            if ( args.Count >= 1 )
+            {
+                args.RemoveAt(0);
+            }
 
             if ( Input.StartsWith("help") )
             {
@@ -41,55 +46,14 @@ namespace Slagathor
             {
                 CMD.restart(args);
             }    
+            else if ( Input.StartsWith("crash") )
+            {
+                Util.Crash(args[0]);
+            }    
             else
             {
                 Console.WriteLine("Error: Not valid command");
             }
-        }
-        public static List<string> ParseArgs( string Input )
-        {
-            // credits due at https://github.com/DogOSdev/DogOS/blob/main/DogOS/Shell/Shell.cs
-
-            var args = new List<string>();
-            var current_arg = new StringBuilder();
-            var in_quotes = false;
-
-            for ( int i = 0; i < Input.Length; i++ )
-            {
-                if ( Input[i] == '"' )
-                {
-                    if ( in_quotes )
-                    {
-                        args.Add( current_arg.ToString() );
-                        current_arg = new StringBuilder();
-                        in_quotes = false;
-                    }
-                    else
-                    {
-                        in_quotes = true;
-                    }
-                }
-                else if ( Input[i] == ' ' )
-                {
-                    if ( in_quotes )
-                    {
-                        current_arg.Append( Input[i] );
-                    }
-                    else if ( current_arg.Length > 0 )
-                    {
-                        args.Add( current_arg.ToString() );
-                        current_arg = new StringBuilder();
-                    }
-                }
-                else
-                {
-                    current_arg.Append( Input[i] );
-                }
-            }
-
-            if ( current_arg.Length > 0 ) args.Add( current_arg.ToString() );
-
-            return args;
         }
     }
 }
