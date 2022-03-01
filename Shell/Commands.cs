@@ -17,7 +17,6 @@ namespace Slagathor
             Console.WriteLine("beep : Makes the console go beep");
             Console.WriteLine("shutdown : Turns off the computer");
             Console.WriteLine("restart : Turns off then on the computer");
-            Console.WriteLine("crash : Forcibly crashes the OS");
         }
         public void test(List<string> args)
         {
@@ -52,12 +51,6 @@ namespace Slagathor
         public void restart(List<string> args)
         {
             Cosmos.System.Power.Reboot();
-        }
-        public void crash(List<string> args)
-        {
-            int x = 0;
-            int y = 0;
-            int z = x / y;
         }
     }
 }

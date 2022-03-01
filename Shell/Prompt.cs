@@ -41,10 +41,6 @@ namespace Slagathor
             {
                 CMD.restart(args);
             }    
-            else if ( Input.StartsWith("crash") )
-            {
-                CMD.crash(args);
-            }
             else
             {
                 Console.WriteLine("Error: Not valid command");

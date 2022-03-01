@@ -41,7 +41,7 @@ namespace Slagathor
             catch(Exception Ex)
             {
                 Console.Write("Error: ");
-                Console.WriteLine(Ex.Message);
+                Console.WriteLine(Ex);
             }
         }
     }
